@@ -22,6 +22,7 @@ environ.Env.read_env(os.path.join(BASE_DIR,'.env'))
 env = environ.Env(
     DEBUG=(bool, False),
     SECURE_SSL_REDIRECT=(bool, True),
+    CSRF_COOKIE_SECURE=(bool, True),
 )
 
 # Quick-start development settings - unsuitable for production
@@ -165,7 +166,7 @@ CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = os.getenv('CORS_ORIGIN_WHITELIST', 'localhost:3000,localhost:8000,localhost:8080,test.example.com:8000,test.example.com:8080,pulse-react.herokuapp.com').split(',')
 
 CORS_ORIGIN_REGEX_WHITELIST = []
-CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = env('CSRF_COOKIE_SECURE')
 CSRF_COOKIE_HTTPONLY = True
 SECURE_BROWSER_XSS_FILTER = True
 SESSION_COOKIE_SECURE = True
